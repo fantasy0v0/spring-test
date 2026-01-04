@@ -1,3 +1,6 @@
+--liquibase formatted sql
+-- 有上面这句, 下面这句才会生效
+--changeset lisi:1716182400000
 CREATE TABLE student (
   id     bigint NOT NULL,
   name   text NOT NULL,

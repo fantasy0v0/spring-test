@@ -11,7 +11,7 @@
   <groupId>com.example.spring-test</groupId>
   <artifactId>core</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>spring-test</name>
+  <name>core</name>
   <description>spring-test</description>
   <url/>
   <licenses>
