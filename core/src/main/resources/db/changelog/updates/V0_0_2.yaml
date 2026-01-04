@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0002
+      author: fan
+      changes:
+        - sqlFile:
+            path: db/migration/V0.0.2__update.sql
