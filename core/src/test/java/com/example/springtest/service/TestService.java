@@ -27,4 +27,16 @@ public class TestService {
     Assertions.assertEquals(1, result);
   }
 
+  @Transactional
+  public void testNew(boolean throwError) {
+    try {
+      test1Service.testNew(throwError);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    int result = jdbcTemplate.update(
+      "update student set name = ? where id = ?", "TestAA", 1);
+    Assertions.assertEquals(1, result);
+  }
+
 }
