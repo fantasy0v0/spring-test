@@ -3,11 +3,19 @@ package com.example.springtest.service;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 @Service
 public class TestService {
+
+  @Autowired
+  private DataSource dataSource;
 
   @Autowired
   private JdbcTemplate jdbcTemplate;
@@ -16,7 +24,9 @@ public class TestService {
   private Test1Service test1Service;
 
   @Transactional
-  public void test(boolean throwError) {
+  public void test(boolean throwError) throws SQLException {
+    Connection connection = DataSourceUtils.doGetConnection(dataSource);
+    Assertions.assertFalse(connection.getAutoCommit());
     try {
       test1Service.test(throwError);
     } catch (Exception e) {
